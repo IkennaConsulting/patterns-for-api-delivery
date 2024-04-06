@@ -1,4 +1,4 @@
-extends: [[spectral:oas, recommended]]
+extends: [[spectral:oas, recommended], [vacuum:owasp, all]]
 
 rules:
   my-vacuum-rule:
