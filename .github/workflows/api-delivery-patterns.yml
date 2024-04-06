@@ -20,6 +20,8 @@ jobs:
       run: curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | sh
     - name: Install Spectral
       run: npm install -g @stoplight/spectral-cli
+    - name: Install Anthropic
+      run: pip3 install anthropic
       ### General purpose linters ############################################
     - name: Run Redocly CLI linting
       run: npx @redocly/cli lint openapi.yaml --config redocly.yaml
