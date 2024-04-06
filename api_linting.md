@@ -3,10 +3,10 @@
 ## The problem
 - When multiple teams in an org build APIs, standardization and inconsistency problems arise.  
   - 51% of the respondents to the 2023 Smartbear State of Software Quality | API report sited standardization as the biggest challenge in API development.
-- There is no time to read, remember and apply all the details of the API style guides. 
+- There is no time to read, remember and apply all the details of your API style guides. 
   - 43% of the respondents of the Postman State of API 2023 report sited lack of time as the biggest obstacle to producing APIs.
 - Teams face high cognitive load. Minutiae of API design is specialist knowledge.
-  - dfd
+  - The 3rd highest obstacle to producing APIs in the Postman survey is the lack of API design skills.
 
 ## Solution
 - Use API linting tools to enforce API style guides and standards. 
