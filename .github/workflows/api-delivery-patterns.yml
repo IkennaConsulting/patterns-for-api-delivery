@@ -20,6 +20,8 @@ jobs:
       run: curl -fsSL https://raw.githubusercontent.com/speakeasy-api/speakeasy/main/install.sh | sh
     - name: Install Spectral
       run: npm install -g @stoplight/spectral-cli
+    - name: Install Anthropic
+      run: pip3 install anthropic
       ### General purpose linters ############################################
     - name: Run Redocly CLI linting
       run: npx @redocly/cli lint openapi.yaml --config redocly.yaml
@@ -35,6 +37,12 @@ jobs:
         OPTIC_TOKEN: ${{ secrets.OPTIC_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: npx @useoptic/optic run openapi.yaml
+      continue-on-error: true
+    ### AI linting ############################################
+    - name: AI linting
+      env:
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      run: python3 ./my-ai-linter.py openapi.yaml ai-ruleset.txt
       continue-on-error: true
     ### Target tool linters ############################################
     - name: Run Readme linting
