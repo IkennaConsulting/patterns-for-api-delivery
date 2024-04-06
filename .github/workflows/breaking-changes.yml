@@ -18,7 +18,7 @@ jobs:
         path: base
     ### Checks ############################################
     - name: Breaking change checks
-      uses: oasdiff/oasdiff-action/check-breaking@main
+      uses: oasdiff/oasdiff-action/breaking@main
       with:
         base: './base/breaking/openapi_v1.yaml'
         revision: './pr-branch/breaking/openapi_v2.yaml'
