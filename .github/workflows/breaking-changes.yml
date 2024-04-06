@@ -20,6 +20,6 @@ jobs:
     - name: Breaking change checks
       uses: oasdiff/oasdiff-action/breaking@main
       with:
-        base: './base/breaking/openapi_v1.yaml'
+        base: './base/openapi.yaml'
         revision: './pr-branch/breaking/openapi_v2.yaml'
         fail-on-diff: false
