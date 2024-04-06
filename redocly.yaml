@@ -22,3 +22,10 @@ rules:
     message: "Example summary must be sentence cased."
     assertions: 
       pattern: /^[A-Z]+[^A-Z]+$/
+  rule/health-endpoint:
+    subject:
+      type: Paths
+    assertions:
+      required:
+        - '/health'
+    message: API must have a health endpoint.
