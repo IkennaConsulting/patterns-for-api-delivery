@@ -1,0 +1,25 @@
+name: Breaking change checks
+
+on: [pull_request]
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+    ### Setup ############################################
+    - name: Checkout PR branch
+      uses: actions/checkout@v4
+      with:
+        path: pr-branch
+    - name: Check out main branch
+      uses: actions/checkout@v4
+      with:
+        ref: main
+        path: base
+    ### Checks ############################################
+    - name: Breaking change checks
+      uses: oasdiff/oasdiff-action/check-breaking@main
+      with:
+        base: './base/breaking/openapi_v1.yaml'
+        revision: './pr-branch/breaking/openapi_v2.yaml'
+        fail-on-diff: false

@@ -20,7 +20,7 @@
 - Eliminate time and mental effort spent on debating standards.
 
 ## How to do it - the code
-See the [Code and run output](./.github/workflows/api-delivery-patterns.yml)
+See the [Code and run output](./.github/workflows/api-consistency.yml)
 
 ## What to look out for when choosing an API linting tool
 - Speed! 
