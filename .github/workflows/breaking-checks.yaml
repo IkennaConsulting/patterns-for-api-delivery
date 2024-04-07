@@ -28,7 +28,7 @@ jobs:
           revision: './pr-branch/openapi.yaml'
           fail-on-diff: false
       - name: Optic checks
-        run: optic diff ./base/openapi.yaml ./pr-branch/openapi.yaml
+        run: optic diff ./base/openapi.yaml ./pr-branch/openapi.yaml --check
         continue-on-error: true
       - name: Optic checks 2
         run: |
