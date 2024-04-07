@@ -3,7 +3,7 @@ name: Breaking change checks
 on: [pull_request]
 
 jobs:
-  linting:
+  breaking-change-checks:
     runs-on: ubuntu-latest
     steps:
     ### Setup ############################################
@@ -28,8 +28,8 @@ jobs:
         revision: './pr-branch/breaking/openapi_v2.yaml'
         fail-on-diff: false
     - name: Optic checks
-      run: optic diff openapi.yaml breaking/openapi_v2.yaml
+      run: optic diff ./base/openapi.yaml ./pr-branch/breaking/openapi_v2.yaml
       continue-on-error: true
-    - name: OpenAPI Changes Check
-      run: optic diff openapi.yaml breaking/openapi_v2.yaml
-      continue-on-error: true
+#    - name: OpenAPI Changes Check
+#      run: optic diff openapi.yaml breaking/openapi_v2.yaml
+#      continue-on-error: true
