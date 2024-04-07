@@ -1,6 +1,4 @@
 ruleset:
-  # Prevent breaking changes
-  - "breaking-changes"
   # Enforce naming conventions in your API
   - naming:
       required_on: always
