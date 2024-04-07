@@ -25,11 +25,11 @@ jobs:
         uses: oasdiff/oasdiff-action/breaking@main
         with:
           base: './base/openapi.yaml'
-          revision: './pr-branch/breaking/openapi_v2.yaml'
+          revision: './pr-branch/openapi.yaml'
           fail-on-diff: false
       - name: Optic checks
         run: optic diff ./base/openapi.yaml ./pr-branch/openapi.yaml
         continue-on-error: true
-      - name: OpenAPI Changes Check
+      - name: Optic checks 2
         run: optic diff openapi.yaml --base main
         continue-on-error: true
