@@ -31,5 +31,7 @@ jobs:
         run: optic diff ./base/openapi.yaml ./pr-branch/openapi.yaml
         continue-on-error: true
       - name: Optic checks 2
-        run: optic diff ./base/openapi.yaml --base main
+        run: |
+          cd pr-branch
+          optic diff openapi.yaml --base main
         continue-on-error: true
