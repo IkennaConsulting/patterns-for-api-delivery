@@ -50,6 +50,6 @@ jobs:
           name: diff-report
           path: |
             report.html
-      - name: Bump check
-        run: bump diff  openapi.yaml openapi_v2.yaml
+      - name: Bump.sh breaking change check
+        run: bump diff ./base/openapi.yaml ./pr-branch/openapi.yaml
       ## Changelog
