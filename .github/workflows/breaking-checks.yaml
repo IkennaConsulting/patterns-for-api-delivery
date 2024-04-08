@@ -22,13 +22,11 @@ jobs:
         run: npm i -g @pb33f/openapi-changes
       - name: Install bump
         run: npm install -g bump-cli
-      ### Checks ############################################
+      - name: Install Tufin/oasdiff
+        run: go install github.com/tufin/oasdiff@lates
+      ### Breaking change checks ############################################
       - name: Tufin/oasdiff checks
-        uses: oasdiff/oasdiff-action/breaking@main
-        with:
-          base: './base/openapi.yaml'
-          revision: './pr-branch/openapi.yaml'
-          fail-on-diff: false
+        run: oasdiff run ./base/openapi.yaml ./pr-branch/openapi.yaml
       - name: Optic checks
         run: optic diff ./base/openapi.yaml ./pr-branch/openapi.yaml --check
         continue-on-error: true
@@ -52,4 +50,7 @@ jobs:
             report.html
       - name: Bump.sh breaking change check
         run: bump diff ./base/openapi.yaml ./pr-branch/openapi.yaml
-      ## Changelog
+      ## Changelog generation ############################################
+      - name : Generate Changelog
+        run: bump changelog ./base/openapi.yaml ./pr-branch/openapi.yaml
+        continue-on-error: true
