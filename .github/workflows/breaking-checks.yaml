@@ -39,3 +39,12 @@ jobs:
       - name: OpenAPI-Changes report
         run: openapi-changes report ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
         continue-on-error: true
+      - name: OpenAPI-Changes HTML report
+        run: openapi-changes html-report ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
+        continue-on-error: true
+      - name: Archive OpenAPI-Changes HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: diff-report
+          path: |
+            report.html
