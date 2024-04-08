@@ -33,6 +33,9 @@ jobs:
       - name: Optic checks 2
         run: optic diff ./base/openapi.yaml ./pr-branch/openapi_v2.yaml --check
         continue-on-error: true
-      - name: OpenAPI-Changes checks
+      - name: OpenAPI-Changes summary
         run: openapi-changes summary ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
+        continue-on-error: true
+      - name: OpenAPI-Changes report
+        run: openapi-changes report ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
         continue-on-error: true
