@@ -52,5 +52,4 @@ jobs:
         run: bump diff ./base/openapi.yaml ./pr-branch/openapi.yaml
       ## Changelog generation ############################################
       - name : Generate Changelog
-        run: bump changelog ./base/openapi.yaml ./pr-branch/openapi.yaml
-        continue-on-error: true
+        run: oasdiff changelog ./base/openapi.yaml ./pr-branch/openapi.yaml
