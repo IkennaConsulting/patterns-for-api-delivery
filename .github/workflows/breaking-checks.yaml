@@ -51,5 +51,8 @@ jobs:
       - name: Bump.sh breaking change check
         run: bump diff ./base/openapi.yaml ./pr-branch/openapi.yaml
       ## Changelog generation ############################################
-      - name : Generate Changelog
+      - name : Oasdiff - Generate Changelog
         run: oasdiff changelog ./base/openapi.yaml ./pr-branch/openapi.yaml
+      - name: Optic - Generate changelog
+        run: optic history openapi.yaml
+
