@@ -7,17 +7,20 @@ There can be integrations/SDK that are done one one-time basis, without on-going
 
 **Real customer quote 2:** "The way [company] handles API changes is going to impact our business since we consume the data in production. We are left without any solutions or guidelines. We found out a bit late about the breaking change that is going to happen tomorrow..."
 
-## The solution
-- Evolve the API without introducing breaking changes.
+## Solution
+- Have a clear versioning strategy
 - Use breaking change tools to catch unintended breaking changes.
  ![Breaking Change Control](./breaking_change.png)
+- Generate an API change log.
 
 ## Benefits
-- Better API adoption and customer satisfaction.
+- Better API adoption 
+- Reduce customer attrition
 - Reduced support costs related to breaking changes. 
 - Lower cognitive load regarding breaking changes 
 
 ## How to do it - the code
+See the [Code and run output](./.github/workflows/breaking-checks.yaml)
 
 ## What to look out for when choosing a breaking change / diff tool
 - Well-defined breaking change rules
