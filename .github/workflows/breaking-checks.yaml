@@ -23,7 +23,9 @@ jobs:
       - name: Install bump
         run: npm install -g bump-cli
       - name: Install Tufin/oasdiff
-        run: go install github.com/tufin/oasdiff@latest
+        run: | 
+          go install github.com/tufin/oasdiff@latest
+          go env
       ### Breaking change checks ############################################
       - name: Tufin/oasdiff checks
         run: oasdiff run ./base/openapi.yaml ./pr-branch/openapi.yaml

@@ -1,14 +1,19 @@
 # Automated Breaking change Controls
 
 ## The problem
+Breaking change: A change to an API that requires existing client integrations to change. 
 
 **Real customer quote 1:**  "You should stop doing breaking changes to the api ASAP. If you do not, as a business, you will lose a massive amount of customers and lose reputation. The reasoning is simple: The API provides a business-critical data infrastructure for a lot of applications.
 There can be integrations/SDK that are done one one-time basis, without on-going support. ....the integration is supposed to work for years ahead, since APIs are not supposed to be changed. "
 
 **Real customer quote 2:** "The way [company] handles API changes is going to impact our business since we consume the data in production. We are left without any solutions or guidelines. We found out a bit late about the breaking change that is going to happen tomorrow..."
 
+Can come from:
+- a change in the API definition.
+- a change in the code not reflected in the definition.
+
 ## Solution
-- Have a clear versioning strategy
+- Have a clear versioning strategy and breaking change policy.
 - Use breaking change tools to catch unintended breaking changes.
  ![Breaking Change Control](./breaking_change.png)
 - Generate an API change log.
