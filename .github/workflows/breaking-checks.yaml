@@ -20,6 +20,8 @@ jobs:
         run: npm install -g @useoptic/optic
       - name: Install OpenAPI-Changes
         run: npm i -g @pb33f/openapi-changes
+      - name: Install bump
+        run: npm install -g bump-cli
       ### Checks ############################################
       - name: Tufin/oasdiff checks
         uses: oasdiff/oasdiff-action/breaking@main
@@ -33,7 +35,7 @@ jobs:
       - name: Optic checks 2
         run: optic diff ./base/openapi.yaml ./pr-branch/openapi_v2.yaml --check
         continue-on-error: true
-      - name: OpenAPI-Changes summary
+      - name: Pb33f OpenAPI-Changes summary
         run: openapi-changes summary ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
         continue-on-error: true
       - name: OpenAPI-Changes report
@@ -48,3 +50,6 @@ jobs:
           name: diff-report
           path: |
             report.html
+      - name: Bump check
+        run: bump diff  openapi.yaml openapi_v2.yaml
+      ## Changelog

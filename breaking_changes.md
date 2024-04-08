@@ -31,5 +31,5 @@ There can be integrations/SDK that are done one one-time basis, without on-going
 - Early part of product development
 
 ## Alternatives
-- Manual API design reviews
-- Consumer-driven contract testing with internal APIs
+- Detect changes in manual API design reviews
+- For internal APIs - consumer-driven contract testing 
