@@ -15,7 +15,7 @@ jobs:
         run: npm install -g fern-api
       - name: Install OpenAPI Generator
         run: npm install -g @openapitools/openapi-generator-cli
-      - name: Setup Kiota
+      - name: Setup Kiota # Kiota from Micrsoft, is a command line tool for generating an API clients in C#, Java, Go, Python, TypeScript etc
         uses: microsoft/setup-kiota@v0.5.0
       ### Generating code ############################################
       - name: Generate clients with Fern
