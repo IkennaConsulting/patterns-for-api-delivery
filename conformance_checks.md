@@ -29,6 +29,7 @@ Run conformance (also called contract or compliance tests) to ensure API referen
 - Lower support costs from defects
 
 ## How to do it - the code
+See the [Code here](./.github/workflows/conformance-checks.yaml)
 - Wiretap
 - Schemathesis - fuzz testing
 
