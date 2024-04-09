@@ -23,26 +23,20 @@ jobs:
       - name: Install bump
         run: npm install -g bump-cli
       ### Breaking change checks ############################################
-      - name: Tufin/oasdiff checks
+      - name: Tufin/oasdiff breaking change checks
         uses: oasdiff/oasdiff-action/breaking@main
         with:
           base: './base/openapi.yaml'
-          revision: './pr-branch/openapi_with_new_property.yaml'
+          revision: './pr-branch/openapi_endpoint_deleted.yaml'
           fail-on-diff: false
-      - name: Optic checks
-        run: optic diff ./base/openapi.yaml ./pr-branch/openapi_with_new_property.yaml --check
-        continue-on-error: true
-      - name: Optic checks 2
+      - name: useoptic/optic breaking change checks
         run: optic diff ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml --check
         continue-on-error: true
       - name: Pb33f OpenAPI-Changes summary
-        run: openapi-changes summary ./base/openapi.yaml ./pr-branch/openapi_with_new_property.yaml --no-logo
-        continue-on-error: true
-      - name: OpenAPI-Changes report
-        run: openapi-changes report ./base/openapi.yaml ./pr-branch/openapi_with_new_property.yaml --no-logo
+        run: openapi-changes summary ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml --no-logo
         continue-on-error: true
       - name: OpenAPI-Changes HTML report
-        run: openapi-changes html-report ./base/openapi.yaml ./pr-branch/openapi_with_new_property.yaml --no-logo
+        run: openapi-changes html-report ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml --no-logo
         continue-on-error: true
       - name: Archive OpenAPI-Changes HTML report
         uses: actions/upload-artifact@v4
@@ -51,7 +45,8 @@ jobs:
           path: |
             report.html
       - name: Bump.sh breaking change check
-        run: bump diff ./base/openapi.yaml ./pr-branch/openapi_with_new_property.yaml
+        run: bump diff ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml
+        continue-on-error: true
       ## Changelog generation ############################################
       - name : Oasdiff - Generate Changelog
         # For how to create a tenant key, see https://github.com/Tufin/oasdiff/blob/main/OASDIFF-SERVICE.md
