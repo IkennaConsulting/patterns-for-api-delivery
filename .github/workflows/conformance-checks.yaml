@@ -13,6 +13,8 @@ jobs:
         run: npm install -g @pb33f/wiretap
       - name: Install Schemathesis
         run: pip install schemathesis
+      - name: Install Newman
+        run: npm install -g newman
       ### Breaking change checks ############################################
       - name: Build the service
         run: |

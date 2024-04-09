@@ -95,7 +95,7 @@ public interface TicketsApi {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
@@ -141,7 +141,7 @@ public interface TicketsApi {
     default ResponseEntity<org.springframework.core.io.Resource> getTicketCode(
         @Parameter(name = "ticketId", description = "Identifier for a ticket to a museum event. Used to generate ticket image.", required = true, in = ParameterIn.PATH) @PathVariable("ticketId") UUID ticketId
     ) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 

@@ -8,9 +8,13 @@ package com.museum.controller;
 import com.museum.model.CreateSpecialEventRequest;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.museum.model.Error;
+
 import java.time.LocalDate;
+
 import com.museum.model.SpecialEventResponse;
+
 import java.util.UUID;
+
 import com.museum.model.UpdateSpecialEventRequest;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
@@ -51,46 +55,46 @@ public interface EventsApi {
      * POST /special-events : Create special events
      * Creates a new special event for the museum.
      *
-     * @param createSpecialEventRequest  (required)
+     * @param createSpecialEventRequest (required)
      * @return Success. (status code 200)
-     *         or  (status code 400)
-     *         or  (status code 404)
+     * or  (status code 400)
+     * or  (status code 404)
      */
     @Operation(
-        operationId = "createSpecialEvent",
-        summary = "Create special events",
-        description = "Creates a new special event for the museum.",
-        tags = { "Events" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Success.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = SpecialEventResponse.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = SpecialEventResponse.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "MuseumPlaceholderAuth")
-        }
+            operationId = "createSpecialEvent",
+            summary = "Create special events",
+            description = "Creates a new special event for the museum.",
+            tags = {"Events"},
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Success.", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = SpecialEventResponse.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = SpecialEventResponse.class))
+                    }),
+                    @ApiResponse(responseCode = "400", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    }),
+                    @ApiResponse(responseCode = "404", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    })
+            },
+            security = {
+                    @SecurityRequirement(name = "MuseumPlaceholderAuth")
+            }
     )
     @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/special-events",
-        produces = { "application/json", "application/problem+json" },
-        consumes = { "application/json" }
+            method = RequestMethod.POST,
+            value = "/special-events",
+            produces = {"application/json", "application/problem+json"},
+            consumes = {"application/json"}
     )
-    
+
     default ResponseEntity<SpecialEventResponse> createSpecialEvent(
-        @Parameter(name = "CreateSpecialEventRequest", description = "", required = true) @Valid @RequestBody CreateSpecialEventRequest createSpecialEventRequest
+            @Parameter(name = "CreateSpecialEventRequest", description = "", required = true) @Valid @RequestBody CreateSpecialEventRequest createSpecialEventRequest
     ) {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"eventId\" : \"3be6453c-03eb-4357-ae5a-984a0e574a54\", \"price\" : 25, \"name\" : \"Pirate Coding Workshop\", \"eventDescription\" : \"Captain Blackbeard shares his love of the C...language. And possibly Arrrrr (R lang).\", \"location\" : \"Computer Room\", \"dates\" : [ \"2023-10-29\", \"2023-10-29\" ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
@@ -98,7 +102,7 @@ public interface EventsApi {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
@@ -109,39 +113,39 @@ public interface EventsApi {
      *
      * @param eventId Identifier for a special event. (required)
      * @return Success - no content. (status code 204)
-     *         or  (status code 400)
-     *         or  (status code 401)
-     *         or  (status code 404)
+     * or  (status code 400)
+     * or  (status code 401)
+     * or  (status code 404)
      */
     @Operation(
-        operationId = "deleteSpecialEvent",
-        summary = "Delete special event",
-        description = "Delete a special event from the collection. Allows museum to cancel planned events.",
-        tags = { "Events" },
-        responses = {
-            @ApiResponse(responseCode = "204", description = "Success - no content."),
-            @ApiResponse(responseCode = "400", description = "", content = {
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            }),
-            @ApiResponse(responseCode = "401", description = "", content = {
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "", content = {
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "MuseumPlaceholderAuth")
-        }
+            operationId = "deleteSpecialEvent",
+            summary = "Delete special event",
+            description = "Delete a special event from the collection. Allows museum to cancel planned events.",
+            tags = {"Events"},
+            responses = {
+                    @ApiResponse(responseCode = "204", description = "Success - no content."),
+                    @ApiResponse(responseCode = "400", description = "", content = {
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    }),
+                    @ApiResponse(responseCode = "401", description = "", content = {
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    }),
+                    @ApiResponse(responseCode = "404", description = "", content = {
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    })
+            },
+            security = {
+                    @SecurityRequirement(name = "MuseumPlaceholderAuth")
+            }
     )
     @RequestMapping(
-        method = RequestMethod.DELETE,
-        value = "/special-events/{eventId}",
-        produces = { "application/problem+json" }
+            method = RequestMethod.DELETE,
+            value = "/special-events/{eventId}",
+            produces = {"application/problem+json"}
     )
-    
+
     default ResponseEntity<Void> deleteSpecialEvent(
-        @Parameter(name = "eventId", description = "Identifier for a special event.", required = true, in = ParameterIn.PATH) @PathVariable("eventId") UUID eventId
+            @Parameter(name = "eventId", description = "Identifier for a special event.", required = true, in = ParameterIn.PATH) @PathVariable("eventId") UUID eventId
     ) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
@@ -154,51 +158,46 @@ public interface EventsApi {
      *
      * @param eventId Identifier for a special event. (required)
      * @return Success. (status code 200)
-     *         or  (status code 400)
-     *         or  (status code 404)
+     * or  (status code 400)
+     * or  (status code 404)
      */
     @Operation(
-        operationId = "getSpecialEvent",
-        summary = "Get special event",
-        description = "Get details about a special event.",
-        tags = { "Events" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Success.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = SpecialEventResponse.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = SpecialEventResponse.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "MuseumPlaceholderAuth")
-        }
+            operationId = "getSpecialEvent",
+            summary = "Get special event",
+            description = "Get details about a special event.",
+            tags = {"Events"},
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Success.", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = SpecialEventResponse.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = SpecialEventResponse.class))
+                    }),
+                    @ApiResponse(responseCode = "400", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    }),
+                    @ApiResponse(responseCode = "404", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    })
+            },
+            security = {
+                    @SecurityRequirement(name = "MuseumPlaceholderAuth")
+            }
     )
     @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/special-events/{eventId}",
-        produces = { "application/json", "application/problem+json" }
+            method = RequestMethod.GET,
+            value = "/special-events/{eventId}",
+            produces = {"application/json", "application/problem+json"}
     )
-    
+
     default ResponseEntity<SpecialEventResponse> getSpecialEvent(
-        @Parameter(name = "eventId", description = "Identifier for a special event.", required = true, in = ParameterIn.PATH) @PathVariable("eventId") UUID eventId
+            @Parameter(name = "eventId", description = "Identifier for a special event.", required = true, in = ParameterIn.PATH) @PathVariable("eventId") UUID eventId
     ) {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"eventId\" : \"3be6453c-03eb-4357-ae5a-984a0e574a54\", \"price\" : 25, \"name\" : \"Pirate Coding Workshop\", \"eventDescription\" : \"Captain Blackbeard shares his love of the C...language. And possibly Arrrrr (R lang).\", \"location\" : \"Computer Room\", \"dates\" : [ \"2023-10-29\", \"2023-10-29\" ] }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
+            String exampleString = "{ \"eventId\" : \"3be6453c-03eb-4357-ae5a-984a0e574a54\", \"price\" : 25, \"name\" : \"Pirate Coding Workshop\", \"eventDescription\" : \"Captain Blackbeard shares his love of the C...language. And possibly Arrrrr (R lang).\", \"location\" : \"Computer Room\", \"dates\" : [ \"2023-10-29\", \"2023-10-29\" ] }";
+            ApiUtil.setExampleResponse(request, "application/json", exampleString);
         });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
@@ -208,50 +207,50 @@ public interface EventsApi {
      * Return a list of upcoming special events at the museum.
      *
      * @param startDate Starting date to retrieve future operating hours from. Defaults to today&#39;s date. (optional)
-     * @param endDate End of a date range to retrieve special events for. Defaults to 7 days after &#x60;startDate&#x60;. (optional)
-     * @param page Page number to retrieve. (optional, default to 1)
-     * @param limit Number of days per page. (optional, default to 10)
+     * @param endDate   End of a date range to retrieve special events for. Defaults to 7 days after &#x60;startDate&#x60;. (optional)
+     * @param page      Page number to retrieve. (optional, default to 1)
+     * @param limit     Number of days per page. (optional, default to 10)
      * @return Success. (status code 200)
-     *         or  (status code 400)
-     *         or  (status code 404)
+     * or  (status code 400)
+     * or  (status code 404)
      */
     @Operation(
-        operationId = "listSpecialEvents",
-        summary = "List special events",
-        description = "Return a list of upcoming special events at the museum.",
-        tags = { "Events" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Success.", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = SpecialEventResponse.class))),
-                @Content(mediaType = "application/problem+json", array = @ArraySchema(schema = @Schema(implementation = SpecialEventResponse.class)))
-            }),
-            @ApiResponse(responseCode = "400", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "MuseumPlaceholderAuth")
-        }
+            operationId = "listSpecialEvents",
+            summary = "List special events",
+            description = "Return a list of upcoming special events at the museum.",
+            tags = {"Events"},
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Success.", content = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = SpecialEventResponse.class))),
+                            @Content(mediaType = "application/problem+json", array = @ArraySchema(schema = @Schema(implementation = SpecialEventResponse.class)))
+                    }),
+                    @ApiResponse(responseCode = "400", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    }),
+                    @ApiResponse(responseCode = "404", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    })
+            },
+            security = {
+                    @SecurityRequirement(name = "MuseumPlaceholderAuth")
+            }
     )
     @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/special-events",
-        produces = { "application/json", "application/problem+json" }
+            method = RequestMethod.GET,
+            value = "/special-events",
+            produces = {"application/json", "application/problem+json"}
     )
-    
+
     default ResponseEntity<List<SpecialEventResponse>> listSpecialEvents(
-        @Parameter(name = "startDate", description = "Starting date to retrieve future operating hours from. Defaults to today's date.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "startDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-        @Parameter(name = "endDate", description = "End of a date range to retrieve special events for. Defaults to 7 days after `startDate`.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "endDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-        @Parameter(name = "page", description = "Page number to retrieve.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
-        @Max(30) @Parameter(name = "limit", description = "Number of days per page.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit
+            @Parameter(name = "startDate", description = "Starting date to retrieve future operating hours from. Defaults to today's date.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "startDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @Parameter(name = "endDate", description = "End of a date range to retrieve special events for. Defaults to 7 days after `startDate`.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "endDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+            @Parameter(name = "page", description = "Page number to retrieve.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+            @Max(30) @Parameter(name = "limit", description = "Number of days per page.", in = ParameterIn.QUERY) @Valid @RequestParam(value = "limit", required = false, defaultValue = "10") Integer limit
     ) {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "[ { \"eventId\" : \"3be6453c-03eb-4357-ae5a-984a0e574a54\", \"price\" : 25, \"name\" : \"Pirate Coding Workshop\", \"eventDescription\" : \"Captain Blackbeard shares his love of the C...language. And possibly Arrrrr (R lang).\", \"location\" : \"Computer Room\", \"dates\" : [ \"2023-10-29\", \"2023-10-29\" ] }, { \"eventId\" : \"3be6453c-03eb-4357-ae5a-984a0e574a54\", \"price\" : 25, \"name\" : \"Pirate Coding Workshop\", \"eventDescription\" : \"Captain Blackbeard shares his love of the C...language. And possibly Arrrrr (R lang).\", \"location\" : \"Computer Room\", \"dates\" : [ \"2023-10-29\", \"2023-10-29\" ] } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
@@ -259,7 +258,7 @@ public interface EventsApi {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
@@ -268,48 +267,48 @@ public interface EventsApi {
      * PATCH /special-events/{eventId} : Update special event
      * Update the details of a special event.
      *
-     * @param eventId Identifier for a special event. (required)
-     * @param updateSpecialEventRequest  (required)
+     * @param eventId                   Identifier for a special event. (required)
+     * @param updateSpecialEventRequest (required)
      * @return Success. (status code 200)
-     *         or  (status code 400)
-     *         or  (status code 404)
+     * or  (status code 400)
+     * or  (status code 404)
      */
     @Operation(
-        operationId = "updateSpecialEvent",
-        summary = "Update special event",
-        description = "Update the details of a special event.",
-        tags = { "Events" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Success.", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = SpecialEventResponse.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = SpecialEventResponse.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
-                @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
-            })
-        },
-        security = {
-            @SecurityRequirement(name = "MuseumPlaceholderAuth")
-        }
+            operationId = "updateSpecialEvent",
+            summary = "Update special event",
+            description = "Update the details of a special event.",
+            tags = {"Events"},
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Success.", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = SpecialEventResponse.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = SpecialEventResponse.class))
+                    }),
+                    @ApiResponse(responseCode = "400", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    }),
+                    @ApiResponse(responseCode = "404", description = "", content = {
+                            @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class)),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Error.class))
+                    })
+            },
+            security = {
+                    @SecurityRequirement(name = "MuseumPlaceholderAuth")
+            }
     )
     @RequestMapping(
-        method = RequestMethod.PATCH,
-        value = "/special-events/{eventId}",
-        produces = { "application/json", "application/problem+json" },
-        consumes = { "application/json" }
+            method = RequestMethod.PATCH,
+            value = "/special-events/{eventId}",
+            produces = {"application/json", "application/problem+json"},
+            consumes = {"application/json"}
     )
-    
+
     default ResponseEntity<SpecialEventResponse> updateSpecialEvent(
-        @Parameter(name = "eventId", description = "Identifier for a special event.", required = true, in = ParameterIn.PATH) @PathVariable("eventId") UUID eventId,
-        @Parameter(name = "UpdateSpecialEventRequest", description = "", required = true) @Valid @RequestBody UpdateSpecialEventRequest updateSpecialEventRequest
+            @Parameter(name = "eventId", description = "Identifier for a special event.", required = true, in = ParameterIn.PATH) @PathVariable("eventId") UUID eventId,
+            @Parameter(name = "UpdateSpecialEventRequest", description = "", required = true) @Valid @RequestBody UpdateSpecialEventRequest updateSpecialEventRequest
     ) {
         getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+            for (MediaType mediaType : MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"eventId\" : \"3be6453c-03eb-4357-ae5a-984a0e574a54\", \"price\" : 25, \"name\" : \"Pirate Coding Workshop\", \"eventDescription\" : \"Captain Blackbeard shares his love of the C...language. And possibly Arrrrr (R lang).\", \"location\" : \"Computer Room\", \"dates\" : [ \"2023-10-29\", \"2023-10-29\" ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
@@ -317,7 +316,7 @@ public interface EventsApi {
                 }
             }
         });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
