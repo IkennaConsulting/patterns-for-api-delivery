@@ -28,11 +28,13 @@ Can come from:
 See the [Code and run output](./.github/workflows/breaking-checks.yaml)
 
 ## What to look out for when choosing a breaking change / diff tool
-- Well-defined breaking change rules
+- Well-defined breaking change rules. https://github.com/Tufin/oasdiff/blob/main/BREAKING-CHANGES-EXAMPLES.md
 - Should also generate OpenAPI change log 
 
 ## Challenges
 - Absence of API providers breaking change policy
+  - https://developer.sage.com/api/people/breaking-changes/
+  - https://developers.hubspot.com/docs/breaking-change-definition
 - Handling deprecations
 
 ## Contraindications
