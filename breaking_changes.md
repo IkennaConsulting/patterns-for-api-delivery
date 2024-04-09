@@ -29,7 +29,7 @@ See the [Code and run output](./.github/workflows/breaking-checks.yaml)
 - Wiretap
 - Schemathesis - fuzz testing
 
-## Tips + What to look out for when choosing a breaking change / diff tool
+## Tips + What to look out for when choosing a tool
 - Well-defined breaking change rules. https://github.com/Tufin/oasdiff/blob/main/BREAKING-CHANGES-EXAMPLES.md
 - Should also generate OpenAPI change log. 
   - You can follow the format in https://keepachangelog.com/en/1.0.0/ 
