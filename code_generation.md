@@ -15,6 +15,7 @@
 - Reduce drift
 
 ## How to do it - the code
+See the [Code here](./.github/workflows/code-generation.yaml)
 
 ## What to look out for when doing code generation
 - Can use a code generation service?
