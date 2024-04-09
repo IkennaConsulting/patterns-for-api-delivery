@@ -15,6 +15,8 @@ jobs:
         run: npm install -g fern-api
       - name: Install OpenAPI Generator
         run: npm install -g @openapitools/openapi-generator-cli
+      - name: Setup Kiota
+        uses: microsoft/setup-kiota@v0.5.0
       ### Generating code ############################################
       - name: Generate clients with Fern
         env:
@@ -25,6 +27,8 @@ jobs:
       - name: Generate stub Spring server with OpenAPI Generator
         run: |
           openapi-generator-cli generate --input-spec openapi.yaml --generator-name spring --output openapi-generated-museum-service --additional-properties=library=spring-boot,apiPackage=com.museum.controller,modelPackage=com.museum.model,configPackage=com.museum.configuration,basePackage=com.museum,useTags=true
+      - name: Generate Java API client with Kiota
+        run: kiota generate --language java --namespace-name uk.co.ikenna.museum --openapi ./openapi_3.0.yaml  --output ./generated-kiota-museum
       - name: Archive generated code
         uses: actions/upload-artifact@v4
         with:
@@ -32,6 +36,7 @@ jobs:
           path: |
             openapi-generated-museum-service
             fern-generated
+            generated-kiota-museum
     
 
 
