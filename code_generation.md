@@ -1,15 +1,17 @@
 # Code Generation Controls
 
 ## Why?
-- To improve the developer experience for API consumers: client SDKs
-- To reduce the chance of drift between the API definition and the implementation: server stubs
+- Ensure that your API definition can be used to generate SDKs if required
+- Generate SDKs/Server stubs:
+  - To improve the developer experience for API consumers: client SDKs
+  - To reduce the chance of drift between the API definition and the implementation: server stubs (server boiler plate)
 
 ## The solution
-- Use a code generation library 
+- Use a code generation library to generate code from your API definition
 
 ## Benefits
 - Lower cognitive load for API consumers 'SDK first experience'
-- Save development time for API consumers and API developers
+- Save development time for API consumers and API producers
 - Reduce drift
 
 ## How to do it - the code
