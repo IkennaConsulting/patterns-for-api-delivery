@@ -12,7 +12,6 @@
 ![Mark Twain](mark-twain.png)
 
 
-
 ## The solution
 Run conformance (also called contract or compliance tests) to ensure API reference is in sync with implementation.
 
@@ -26,7 +25,7 @@ Run conformance (also called contract or compliance tests) to ensure API referen
 
 ## What to look out for when doing conformance testing
 - Run on PR changes (lightweight)
-- Avoid running on every build (expensive)
+- Avoid running full suite on every build (expensive)
 - Multiple controls helpful - testing conformance + generating code from specs 
 
 ## Challenges

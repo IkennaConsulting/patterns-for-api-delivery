@@ -34,6 +34,9 @@ jobs:
           name: wiretap-report
           path: |
             wiretap-report.json
+      - name: Run Schemathesis test
+        run: st run --checks all --contrib-openapi-formats-uuid --cassette-path cassette.yaml --data-generation-method all  --experimental=openapi-3.1 --base-url http://localhost:8080 openapi.yaml
+        continue-on-error: true
       - name: Stop the service
         run: |
           cd museum-service 
