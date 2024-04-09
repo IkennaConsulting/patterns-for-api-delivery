@@ -1,16 +1,20 @@
 # API Conformance Controls - Conformance tests
 
 
-## The problem
+## Why ?
+
+- API reference document can become inconsistent with the actual API implementation.
+
+- 52% of the respondents to the 2023 Smartbear State of Software Quality | API report
+  sited documentation being out of sync as the 2nd largest hindrance to API documentation
 
 -  "It ain’t what you don't know that gets you into trouble. It's what you know for sure that just ain't so." – Mark Twain
 ![Mark Twain](mark-twain.png)
 
-- 52% of the respondents to the 2023 Smartbear State of Software Quality | API report
-sited documentation being out of sync as the 2nd largest hindrance to API documentation
+
 
 ## The solution
-Run conformance (also called contract tests) to ensure API reference is in sync with implementation.
+Run conformance (also called contract or compliance tests) to ensure API reference is in sync with implementation.
 
 ## Benefits
 - Reliable, trustworthy documentation 

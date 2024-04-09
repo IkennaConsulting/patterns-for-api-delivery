@@ -24,6 +24,16 @@ jobs:
         run: |
           cd museum-service
           mvn -f pom.xml spring-boot:start
+      - name: Run Wiretap
+        run: wiretap --spec openapi_non_conformant.yaml --url http://localhost:8080 --report-filename wiretap.json --stream-report --port 9090
+      - name: Execute Postman collection with Newman
+        run:  newman run museum_api.postman_collection.json
+      - name: Archive Wiretap report
+        uses: actions/upload-artifact@v4
+        with:
+          name: wiretap-report
+          path: |
+            wiretap-report.json
       - name: Stop the service
         run: |
           cd museum-service 

@@ -36,7 +36,7 @@
 									"variable": [
 										{
 											"key": "eventId",
-											"value": "<uuid>",
+											"value": "78777aa6-8e4e-4a54-bc03-6b42f00b333c",
 											"description": "(Required) Identifier for a special event."
 										}
 									]
@@ -1020,7 +1020,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ticketType\": \"<string>\",\n  \"ticketDate\": \"<date>\",\n  \"email\": \"<email>\",\n  \"eventId\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+							"raw": "{\n  \"ticketType\": \"general\",\n  \"ticketDate\": \"2023-09-07\",\n  \"email\": \"todd@example.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1596,7 +1596,12 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8080/v1",
+			"value": "http://localhost:9090/v1",
+			"type": "string"
+		},
+		{
+			"key": "eventId",
+			"value": "78777aa6-8e4e-4a54-bc03-6b42f00b333c",
 			"type": "string"
 		}
 	]
