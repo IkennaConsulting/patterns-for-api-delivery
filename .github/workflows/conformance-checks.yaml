@@ -1,0 +1,43 @@
+name: Conformance Controls
+
+on: [pull_request]
+
+jobs:
+  conformance-tests:
+    runs-on: ubuntu-latest
+    steps:
+      ### Setup ############################################
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+      - name: Install Wiretap
+        run: npm install -g @pb33f/wiretap
+      - name: Install Schemathesis
+        run: pip install schemathesis
+      - name: Install Newman
+        run: npm install -g newman
+      ### Breaking change checks ############################################
+      - name: Build the service
+        run: |
+          cd museum-service
+          mvn --batch-mode install
+      - name: Start the service
+        run: |
+          cd museum-service
+          mvn -f pom.xml spring-boot:start
+      - name: Run Wiretap
+        run: wiretap --spec openapi_non_conformant.yaml --url http://localhost:8080 --report-filename wiretap-report.json --stream-report --port 9090 &
+      - name: Execute Postman collection with Newman
+        run:  newman run museum_api.postman_collection.json --verbose
+      - name: Archive Wiretap report
+        uses: actions/upload-artifact@v4
+        with:
+          name: wiretap-report
+          path: |
+            wiretap-report.json
+      - name: Stop the service
+        run: |
+          cd museum-service 
+          mvn -f pom.xml spring-boot:stop
+
+
+

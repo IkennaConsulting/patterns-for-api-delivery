@@ -1,0 +1,60 @@
+name: Breaking change checks
+
+on: [pull_request]
+
+jobs:
+  breaking-change-checks:
+    runs-on: ubuntu-latest
+    steps:
+      ### Setup ############################################
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          path: pr-branch
+      - name: Check out main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: base
+      - name: Install Optic
+        run: npm install -g @useoptic/optic
+      - name: Install OpenAPI-Changes
+        run: npm i -g @pb33f/openapi-changes
+      - name: Install bump
+        run: npm install -g bump-cli
+      - name: Install Tufin/oasdiff
+        run: | 
+          go install github.com/tufin/oasdiff@latest
+          go env
+      ### Breaking change checks ############################################
+      - name: Tufin/oasdiff checks
+        run: oasdiff breaking ./base/openapi.yaml ./pr-branch/openapi.yaml
+      - name: Optic checks
+        run: optic diff ./base/openapi.yaml ./pr-branch/openapi.yaml --check
+        continue-on-error: true
+      - name: Optic checks 2
+        run: optic diff ./base/openapi.yaml ./pr-branch/openapi_v2.yaml --check
+        continue-on-error: true
+      - name: Pb33f OpenAPI-Changes summary
+        run: openapi-changes summary ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
+        continue-on-error: true
+      - name: OpenAPI-Changes report
+        run: openapi-changes report ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
+        continue-on-error: true
+      - name: OpenAPI-Changes HTML report
+        run: openapi-changes html-report ./base/openapi.yaml ./pr-branch/openapi.yaml --no-logo
+        continue-on-error: true
+      - name: Archive OpenAPI-Changes HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: diff-report
+          path: |
+            report.html
+      - name: Bump.sh breaking change check
+        run: bump diff ./base/openapi.yaml ./pr-branch/openapi.yaml
+      ## Changelog generation ############################################
+      - name : Oasdiff - Generate Changelog
+        run: oasdiff changelog ./base/openapi.yaml ./pr-branch/openapi.yaml
+      - name: Optic - Generate changelog
+        run: optic history openapi.yaml
+

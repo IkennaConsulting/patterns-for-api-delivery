@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "048bf242-d617-42e4-bfe2-6533fa0cedb6",
+		"_postman_id": "e23da848-a601-4577-a60d-0e94a618d494",
 		"name": "Redocly Museum API",
 		"description": "Imaginary, but delightful Museum API for interacting with museum services and information. Built with love by Redocly.\n\nContact Support:\n Email: team@redocly.com",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19673460",
-		"_collection_link": "https://ikenna-team.postman.co/workspace/PattersForApiDelivery~571ddecc-0a9f-4b64-b6cd-be81a202fa2c/collection/19673460-048bf242-d617-42e4-bfe2-6533fa0cedb6?action=share&source=collection_link&creator=19673460"
+		"_collection_link": "https://ikenna-team.postman.co/workspace/PattersForApiDelivery~571ddecc-0a9f-4b64-b6cd-be81a202fa2c/collection/19673460-e23da848-a601-4577-a60d-0e94a618d494?action=share&source=collection_link&creator=19673460"
 	},
 	"item": [
 		{
@@ -36,7 +36,7 @@
 									"variable": [
 										{
 											"key": "eventId",
-											"value": "<uuid>",
+											"value": "78777aa6-8e4e-4a54-bc03-6b42f00b333c",
 											"description": "(Required) Identifier for a special event."
 										}
 									]
@@ -60,11 +60,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/special-events/:eventId",
+											"raw": "http://localhost:8080/v1/special-events/:eventId",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8080",
 											"path": [
+												"v1",
 												"special-events",
 												":eventId"
 											],
@@ -197,7 +200,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\"\n}",
+									"raw": "{\n  \"location\": \"On the beach.\",\n  \"price\": 15\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -216,7 +219,7 @@
 									"variable": [
 										{
 											"key": "eventId",
-											"value": "<uuid>",
+											"value": "78777aa6-8e4e-4a54-bc03-6b42f00b333c",
 											"description": "(Required) Identifier for a special event."
 										}
 									]
@@ -249,11 +252,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/special-events/:eventId",
+											"raw": "http://localhost:8080/v1/special-events/:eventId",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8080",
 											"path": [
+												"v1",
 												"special-events",
 												":eventId"
 											],
@@ -410,7 +416,7 @@
 									"variable": [
 										{
 											"key": "eventId",
-											"value": "<uuid>",
+											"value": "dad4bce8-f5cb-4078-a211-995864315e39",
 											"description": "(Required) Identifier for a special event."
 										}
 									]
@@ -430,11 +436,14 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/special-events/:eventId",
+											"raw": "http://localhost:8080/v1/special-events/:eventId",
+											"protocol": "http",
 											"host": [
-												"{{baseUrl}}"
+												"localhost"
 											],
+											"port": "8080",
 											"path": [
+												"v1",
 												"special-events",
 												":eventId"
 											],
@@ -614,7 +623,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\"\n}",
+							"raw": "{\n  \"name\": \"Mermaid Treasure Identification and Analysis\",\n  \"location\": \"Under the seaaa 🦀 🎶 🌊.\",\n  \"eventDescription\": \"Join us as we review and classify a rare collection of 20 thingamabobs, gadgets, gizmos, whoosits, and whatsits, kindly donated by Ariel.\",\n  \"dates\": [\n    \"2023-09-05\",\n    \"2023-09-08\"\n  ],\n  \"price\": 0, \n  \"info\": \"Some event information\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -650,7 +659,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\"\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\",\n  \"info\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -658,11 +667,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/special-events",
+									"raw": "http://localhost:8080/v1/special-events",
+									"protocol": "http",
 									"host": [
-										"{{baseUrl}}"
+										"localhost"
 									],
+									"port": "8080",
 									"path": [
+										"v1",
 										"special-events"
 									]
 								}
@@ -696,7 +708,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\"\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\",\n  \"info\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -742,7 +754,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\"\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"location\": \"<string>\",\n  \"eventDescription\": \"<string>\",\n  \"dates\": [\n    \"<date>\",\n    \"<date>\"\n  ],\n  \"price\": \"<float>\",\n  \"info\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -784,7 +796,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/special-events?startDate=<date>&endDate=<date>&page=1&limit=10",
+							"raw": "{{baseUrl}}/special-events?startDate=2023-02-23&endDate=2023-04-18&page=1&limit=10",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -794,12 +806,12 @@
 							"query": [
 								{
 									"key": "startDate",
-									"value": "<date>",
+									"value": "2023-02-23",
 									"description": "Starting date to retrieve future operating hours from. Defaults to today's date."
 								},
 								{
 									"key": "endDate",
-									"value": "<date>",
+									"value": "2023-04-18",
 									"description": "End of a date range to retrieve special events for. Defaults to 7 days after `startDate`."
 								},
 								{
@@ -833,11 +845,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/special-events?startDate=<date>&endDate=<date>&page=1&limit=10",
+									"raw": "http://localhost:8080/v1/special-events?startDate=<date>&endDate=<date>&page=1&limit=10",
+									"protocol": "http",
 									"host": [
-										"{{baseUrl}}"
+										"localhost"
 									],
+									"port": "8080",
 									"path": [
+										"v1",
 										"special-events"
 									],
 									"query": [
@@ -1005,7 +1020,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ticketType\": \"<string>\",\n  \"ticketDate\": \"<date>\",\n  \"email\": \"<email>\",\n  \"eventId\": \"<uuid>\",\n  \"phone\": \"<string>\"\n}",
+							"raw": "{\n  \"ticketType\": \"general\",\n  \"ticketDate\": \"2023-09-07\",\n  \"email\": \"todd@example.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1049,11 +1064,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/tickets",
+									"raw": "http://localhost:8080/v1/tickets",
+									"protocol": "http",
 									"host": [
-										"{{baseUrl}}"
+										"localhost"
 									],
+									"port": "8080",
 									"path": [
+										"v1",
 										"tickets"
 									]
 								}
@@ -1187,7 +1205,7 @@
 							"variable": [
 								{
 									"key": "ticketId",
-									"value": "<uuid>",
+									"value": "78777aa6-8e4e-4a54-bc03-6b42f00b333c",
 									"description": "(Required) Identifier for a ticket to a museum event. Used to generate ticket image."
 								}
 							]
@@ -1211,11 +1229,14 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/tickets/:ticketId/qr",
+									"raw": "http://localhost:8080/v1/tickets/:ticketId/qr",
+									"protocol": "http",
 									"host": [
-										"{{baseUrl}}"
+										"localhost"
 									],
+									"port": "8080",
 									"path": [
+										"v1",
 										"tickets",
 										":ticketId",
 										"qr"
@@ -1348,7 +1369,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{baseUrl}}/museum-hours?startDate=<date>&page=1&limit=10",
+					"raw": "{{baseUrl}}/museum-hours?startDate=2023-02-23&page=1&limit=10",
 					"host": [
 						"{{baseUrl}}"
 					],
@@ -1358,7 +1379,7 @@
 					"query": [
 						{
 							"key": "startDate",
-							"value": "<date>",
+							"value": "2023-02-23",
 							"description": "Starting date to retrieve future operating hours from. Defaults to today's date."
 						},
 						{
@@ -1392,11 +1413,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/museum-hours?startDate=<date>&page=1&limit=10",
+							"raw": "http://localhost:8080/v1/museum-hours?startDate=<date>&page=1&limit=10",
+							"protocol": "http",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8080",
 							"path": [
+								"v1",
 								"museum-hours"
 							],
 							"query": [
@@ -1547,10 +1571,37 @@
 			}
 		]
 	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "https://api.fake-museum-example.com/v1.1",
+			"value": "http://localhost:9090/v1",
+			"type": "string"
+		},
+		{
+			"key": "eventId",
+			"value": "78777aa6-8e4e-4a54-bc03-6b42f00b333c",
 			"type": "string"
 		}
 	]
