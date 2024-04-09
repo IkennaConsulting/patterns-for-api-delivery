@@ -1,0 +1,101 @@
+types:
+  TicketType:
+    enum:
+      - event
+      - general
+    docs: >-
+      Type of ticket being purchased. Use `general` for regular museum entry and
+      `event` for tickets to special events.
+  Date: string
+  Email:
+    type: string
+    docs: Email address for ticket purchaser.
+  Phone:
+    type: string
+    docs: Phone number for the ticket purchaser (optional).
+  TicketMessage:
+    type: string
+    docs: Confirmation message after a ticket purchase.
+  TicketId:
+    type: string
+    docs: Unique identifier for museum ticket. Generated when purchased.
+  TicketConfirmation:
+    type: string
+    docs: Unique confirmation code used to verify ticket purchase.
+  BuyMuseumTicketsResponse:
+    docs: Details for a museum ticket after a successful purchase.
+    properties:
+      message: TicketMessage
+      eventName: optional<EventName>
+      ticketId: TicketId
+      ticketType: TicketType
+      ticketDate:
+        type: Date
+        docs: Date the ticket is valid for.
+      confirmationCode: TicketConfirmation
+  GetTicketCodeResponse:
+    type: string
+    docs: Image of a ticket with a QR code used for museum or event entry.
+  GetMuseumHoursResponse:
+    docs: List of museum operating hours for consecutive days.
+    type: list<MuseumDailyHours>
+  MuseumDailyHours:
+    docs: Daily operating hours for the museum.
+    properties:
+      date:
+        type: Date
+        docs: Date the operating hours apply to.
+      timeOpen:
+        type: string
+        docs: >-
+          Time the museum opens on a specific date. Uses 24 hour time format
+          (`HH:mm`).
+      timeClose:
+        type: string
+        docs: >-
+          Time the museum closes on a specific date. Uses 24 hour time format
+          (`HH:mm`).
+  EventId:
+    type: string
+    docs: Identifier for a special event.
+  EventName:
+    type: string
+    docs: Name of the special event.
+  EventLocation:
+    type: string
+    docs: Location where the special event is held.
+  EventDescription:
+    type: string
+    docs: Description of the special event.
+  EventDates:
+    docs: List of planned dates for the special event.
+    type: list<Date>
+  EventPrice:
+    type: double
+    docs: Price of a ticket for the special event.
+  ListSpecialEventsResponse:
+    docs: List of upcoming special events.
+    type: list<SpecialEventResponse>
+  SpecialEventResponse:
+    docs: Information about a special event.
+    properties:
+      eventId: EventId
+      name: EventName
+      location: EventLocation
+      eventDescription: EventDescription
+      dates: EventDates
+      price: EventPrice
+  Error:
+    properties:
+      type: optional<string>
+      title: optional<string>
+errors:
+  BadRequestError:
+    status-code: 400
+    type: Error
+  UnauthorizedError:
+    status-code: 401
+    type: Error
+  NotFoundError:
+    status-code: 404
+    type: Error

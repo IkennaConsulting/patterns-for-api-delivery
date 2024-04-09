@@ -8,6 +8,7 @@ Control patterns for automating API product delivery are discussed in the talk. 
 - [Breaking Change Controls](./breaking_changes.md)
 - [API Conformance Controls](./conformance_checks.md)
 - [Code Generation Controls](./code_generation.md)
+- [General tips](./general_tips.md)
 
 # The book
 Get it here: [Automating API Delivery](https://shortener.manning.com/Y1ja)

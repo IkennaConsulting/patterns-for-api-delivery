@@ -1,0 +1,70 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    buyMuseumTickets:
+      path: /tickets
+      method: POST
+      auth: true
+      docs: Purchase museum tickets for general entry or special events.
+      display-name: Buy museum tickets
+      request:
+        name: BuyMuseumTicketsRequest
+        body:
+          properties:
+            ticketType: root.TicketType
+            eventId:
+              docs: >-
+                Unique identifier for a special event. Required if purchasing
+                tickets for the museum's special events.
+              type: optional<root.EventId>
+            ticketDate:
+              type: root.Date
+              docs: Date that the ticket is valid for.
+            email: root.Email
+            phone: optional<root.Phone>
+      response:
+        docs: Success.
+        type: root.BuyMuseumTicketsResponse
+      errors:
+        - root.BadRequestError
+        - root.NotFoundError
+      examples:
+        - request:
+            ticketType: event
+            eventId: 3be6453c-03eb-4357-ae5a-984a0e574a54
+            ticketDate: '2023-10-29'
+            email: museum-lover@example.com
+            phone: +1(234)-567-8910
+          response:
+            body:
+              message: Museum general entry ticket purchased
+              eventName: Pirate Coding Workshop
+              ticketId: a54a57ca-36f8-421b-a6b4-2e8f26858a4c
+              ticketType: event
+              ticketDate: '2023-10-29'
+              confirmationCode: ticket-event-a98c8f-7eb12
+    getTicketCode:
+      path: /tickets/{ticketId}/qr
+      method: GET
+      auth: true
+      docs: >-
+        Return an image of your ticket with scannable QR code. Used for event
+        entry.
+      path-parameters:
+        ticketId:
+          type: string
+          docs: >-
+            Identifier for a ticket to a museum event. Used to generate ticket
+            image.
+      display-name: Get ticket QR code
+      response:
+        docs: Scannable event ticket in image format.
+        type: file
+      examples:
+        - path-parameters:
+            ticketId: a54a57ca-36f8-421b-a6b4-2e8f26858a4c
+  display-name: Tickets
+docs: Museum tickets for general entrance or special events.

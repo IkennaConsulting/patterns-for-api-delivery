@@ -1,0 +1,44 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    getMuseumHours:
+      path: /museum-hours
+      method: GET
+      auth: true
+      docs: Get upcoming museum operating hours.
+      display-name: Get museum hours
+      request:
+        name: GetMuseumHoursRequest
+        query-parameters:
+          startDate:
+            type: optional<string>
+            docs: >-
+              Starting date to retrieve future operating hours from. Defaults to
+              today's date.
+          page:
+            type: optional<integer>
+            docs: Page number to retrieve.
+          limit:
+            type: optional<integer>
+            docs: Number of days per page.
+      response:
+        docs: Success.
+        type: root.GetMuseumHoursResponse
+      errors:
+        - root.BadRequestError
+        - root.NotFoundError
+      examples:
+        - query-parameters:
+            startDate: '2023-02-23'
+            page: 2
+            limit: 15
+          response:
+            body:
+              - date: '2023-10-29'
+                timeOpen: '09:00'
+                timeClose: '18:00'
+  display-name: Operations
+docs: Operational information about the museum.
