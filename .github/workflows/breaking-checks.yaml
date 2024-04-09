@@ -57,5 +57,7 @@ jobs:
         # For how to create a tenant key, see https://github.com/Tufin/oasdiff/blob/main/OASDIFF-SERVICE.md
         run:  curl -X POST -F base=@./base/openapi.yaml -F revision=@./pr-branch/openapi_endpoint_deleted.yaml  https://api.oasdiff.com/tenants/${{ secrets.OASDIFF_TENANT_KEY }}/changelog
       - name: Optic - Generate changelog
-        run: optic history openapi.yaml
+        run: | 
+          cd base 
+          optic history openapi.yaml
 
