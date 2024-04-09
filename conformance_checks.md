@@ -14,6 +14,7 @@
 
 ## The solution
 Run conformance (also called contract or compliance tests) to ensure API reference is in sync with implementation.
+![Conformance control](./conformance.png)
 ## Types
 - Code-based end-to-end schema test.
 - Code-based controller schema test.
