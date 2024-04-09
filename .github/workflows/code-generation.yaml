@@ -3,7 +3,7 @@ name: Code Generation Controls
 on: [pull_request]
 
 jobs:
-  conformance-tests:
+  code-generation:
     runs-on: ubuntu-latest
     steps:
       ### Setup ############################################

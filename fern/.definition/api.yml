@@ -1,0 +1,11 @@
+name: api
+error-discrimination:
+  strategy: status-code
+display-name: Redocly Museum API
+environments:
+  Default: http://localhost:8080/v1
+default-environment: Default
+auth-schemes:
+  BasicAuthScheme:
+    scheme: basic
+auth: BasicAuthScheme

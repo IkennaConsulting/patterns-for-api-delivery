@@ -1,0 +1,195 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    listSpecialEvents:
+      path: /special-events
+      method: GET
+      auth: true
+      docs: Return a list of upcoming special events at the museum.
+      display-name: List special events
+      request:
+        name: ListSpecialEventsRequest
+        query-parameters:
+          startDate:
+            type: optional<string>
+            docs: >-
+              Starting date to retrieve future operating hours from. Defaults to
+              today's date.
+          endDate:
+            type: optional<string>
+            docs: >-
+              End of a date range to retrieve special events for. Defaults to 7
+              days after `startDate`.
+          page:
+            type: optional<integer>
+            docs: Page number to retrieve.
+          limit:
+            type: optional<integer>
+            docs: Number of days per page.
+      response:
+        docs: Success.
+        type: root.ListSpecialEventsResponse
+      errors:
+        - root.BadRequestError
+        - root.NotFoundError
+      examples:
+        - query-parameters:
+            startDate: '2023-02-23'
+            endDate: '2023-04-18'
+            page: 2
+            limit: 15
+          response:
+            body:
+              - eventId: 3be6453c-03eb-4357-ae5a-984a0e574a54
+                name: Pirate Coding Workshop
+                location: Computer Room
+                eventDescription: >-
+                  Captain Blackbeard shares his love of the C...language. And
+                  possibly Arrrrr (R lang).
+                dates:
+                  - '2023-10-29'
+                price: 25
+    createSpecialEvent:
+      path: /special-events
+      method: POST
+      auth: true
+      docs: Creates a new special event for the museum.
+      display-name: Create special events
+      request:
+        name: CreateSpecialEventRequest
+        body:
+          properties:
+            name: root.EventName
+            location: root.EventLocation
+            eventDescription: root.EventDescription
+            dates: root.EventDates
+            price: root.EventPrice
+      response:
+        docs: Success.
+        type: root.SpecialEventResponse
+      errors:
+        - root.BadRequestError
+        - root.NotFoundError
+      examples:
+        - request:
+            name: Pirate Coding Workshop
+            location: Computer Room
+            eventDescription: >-
+              Captain Blackbeard shares his love of the C...language. And
+              possibly Arrrrr (R lang).
+            dates:
+              - '2023-10-29'
+            price: 25
+          response:
+            body:
+              eventId: 3be6453c-03eb-4357-ae5a-984a0e574a54
+              name: Pirate Coding Workshop
+              location: Computer Room
+              eventDescription: >-
+                Captain Blackbeard shares his love of the C...language. And
+                possibly Arrrrr (R lang).
+              dates:
+                - '2023-10-29'
+              price: 25
+    getSpecialEvent:
+      path: /special-events/{eventId}
+      method: GET
+      auth: true
+      docs: Get details about a special event.
+      path-parameters:
+        eventId:
+          type: string
+          docs: Identifier for a special event.
+      display-name: Get special event
+      response:
+        docs: Success.
+        type: root.SpecialEventResponse
+      errors:
+        - root.BadRequestError
+        - root.NotFoundError
+      examples:
+        - path-parameters:
+            eventId: dad4bce8-f5cb-4078-a211-995864315e39
+          response:
+            body:
+              eventId: 3be6453c-03eb-4357-ae5a-984a0e574a54
+              name: Pirate Coding Workshop
+              location: Computer Room
+              eventDescription: >-
+                Captain Blackbeard shares his love of the C...language. And
+                possibly Arrrrr (R lang).
+              dates:
+                - '2023-10-29'
+              price: 25
+    deleteSpecialEvent:
+      path: /special-events/{eventId}
+      method: DELETE
+      auth: true
+      docs: >-
+        Delete a special event from the collection. Allows museum to cancel
+        planned events.
+      path-parameters:
+        eventId:
+          type: string
+          docs: Identifier for a special event.
+      display-name: Delete special event
+      errors:
+        - root.BadRequestError
+        - root.UnauthorizedError
+        - root.NotFoundError
+      examples:
+        - path-parameters:
+            eventId: dad4bce8-f5cb-4078-a211-995864315e39
+    updateSpecialEvent:
+      path: /special-events/{eventId}
+      method: PATCH
+      auth: true
+      docs: Update the details of a special event.
+      path-parameters:
+        eventId:
+          type: string
+          docs: Identifier for a special event.
+      display-name: Update special event
+      request:
+        name: UpdateSpecialEventRequest
+        body:
+          properties:
+            name: optional<root.EventName>
+            location: optional<root.EventLocation>
+            eventDescription: optional<root.EventDescription>
+            dates: optional<root.EventDates>
+            price: optional<root.EventPrice>
+      response:
+        docs: Success.
+        type: root.SpecialEventResponse
+      errors:
+        - root.BadRequestError
+        - root.NotFoundError
+      examples:
+        - path-parameters:
+            eventId: dad4bce8-f5cb-4078-a211-995864315e39
+          request:
+            name: Pirate Coding Workshop
+            location: Computer Room
+            eventDescription: >-
+              Captain Blackbeard shares his love of the C...language. And
+              possibly Arrrrr (R lang).
+            dates:
+              - '2023-10-29'
+            price: 25
+          response:
+            body:
+              eventId: 3be6453c-03eb-4357-ae5a-984a0e574a54
+              name: Pirate Coding Workshop
+              location: Computer Room
+              eventDescription: >-
+                Captain Blackbeard shares his love of the C...language. And
+                possibly Arrrrr (R lang).
+              dates:
+                - '2023-10-29'
+              price: 25
+  display-name: Events
+docs: Special events hosted by the museum.

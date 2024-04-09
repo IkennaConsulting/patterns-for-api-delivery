@@ -3,7 +3,7 @@ name: API Consistency checks
 on: [pull_request]
 
 jobs:
-  linting:
+  consistency-checks:
     runs-on: ubuntu-latest
     steps:
     ### Setup ############################################
