@@ -28,7 +28,7 @@ jobs:
           go env
       ### Breaking change checks ############################################
       - name: Tufin/oasdiff checks
-        run: oasdiff run ./base/openapi.yaml ./pr-branch/openapi.yaml
+        run: oasdiff breaking ./base/openapi.yaml ./pr-branch/openapi.yaml
       - name: Optic checks
         run: optic diff ./base/openapi.yaml ./pr-branch/openapi.yaml --check
         continue-on-error: true

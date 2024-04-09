@@ -11,7 +11,7 @@ info:
     name: MIT
     url: "https://opensource.org/license/mit/"
 servers:
-  - url: "https://api.fake-museum-example.com/v1.1"
+  - url: "http://localhost:8080/v1"
 paths:
   /museum-hours:
     get:

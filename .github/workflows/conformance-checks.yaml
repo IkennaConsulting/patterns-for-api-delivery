@@ -1,0 +1,25 @@
+name: Conformance Controls
+
+on: [pull_request]
+
+jobs:
+  conformance-tests:
+    runs-on: ubuntu-latest
+    steps:
+      ### Setup ############################################
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+      - name: Install Wiretap
+        run: npm install -g @pb33f/wiretap
+      - name: Install Schemathesis
+        run: pip install schemathesis
+      ### Breaking change checks ############################################
+      - name: Build the service
+        run: mvn --batch-mode install
+      - name: Start the service
+        run: mvn -f pom.xml spring-boot:start
+      - name: Stop the service
+        run: mvn -f pom.xml spring-boot:start
+
+
+
