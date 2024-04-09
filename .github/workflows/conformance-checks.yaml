@@ -1,6 +1,8 @@
 name: Conformance Controls
 
-on: [pull_request]
+on:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   conformance-tests:
