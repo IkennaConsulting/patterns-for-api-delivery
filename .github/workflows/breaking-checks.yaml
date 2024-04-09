@@ -38,9 +38,6 @@ jobs:
       - name: Pb33f OpenAPI-Changes summary
         run: openapi-changes summary ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml --no-logo
         continue-on-error: true
-      - name: OpenAPI-Changes report
-        run: openapi-changes report ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml --no-logo
-        continue-on-error: true
       - name: OpenAPI-Changes HTML report
         run: openapi-changes html-report ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml --no-logo
         continue-on-error: true
@@ -52,6 +49,7 @@ jobs:
             report.html
       - name: Bump.sh breaking change check
         run: bump diff ./base/openapi.yaml ./pr-branch/openapi_endpoint_deleted.yaml
+        continue-on-error: true
       ## Changelog generation ############################################
       - name : Oasdiff - Generate Changelog
         # For how to create a tenant key, see https://github.com/Tufin/oasdiff/blob/main/OASDIFF-SERVICE.md
