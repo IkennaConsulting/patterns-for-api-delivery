@@ -15,11 +15,17 @@ jobs:
         run: pip install schemathesis
       ### Breaking change checks ############################################
       - name: Build the service
-        run: mvn --batch-mode install
+        run: |
+          cd museum-service
+          mvn --batch-mode install
       - name: Start the service
-        run: mvn -f pom.xml spring-boot:start
+        run: |
+          cd museum-service
+          mvn -f pom.xml spring-boot:start
       - name: Stop the service
-        run: mvn -f pom.xml spring-boot:start
+        run: |
+          cd museum-service 
+          mvn -f pom.xml spring-boot:stop
 
 
 
