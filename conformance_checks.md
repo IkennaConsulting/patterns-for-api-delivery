@@ -14,6 +14,11 @@
 
 ## The solution
 Run conformance (also called contract or compliance tests) to ensure API reference is in sync with implementation.
+## Types
+- Code-based end-to-end schema test.
+- Code-based controller schema test.
+- Auto generated end-to-end schema test with a fuzzer.
+- End-to-end schema testing with validating proxy.
 
 ## Benefits
 - Reliable, trustworthy documentation 
