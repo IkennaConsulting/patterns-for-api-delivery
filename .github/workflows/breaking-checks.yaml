@@ -23,7 +23,7 @@ jobs:
       - name: Install bump
         run: npm install -g bump-cli
       ### Breaking change checks ############################################
-      - name: Tufin/oasdiff checks
+      - name: Tufin/oasdiff breaking change checks
         uses: oasdiff/oasdiff-action/breaking@main
         with:
           base: './base/openapi.yaml'
