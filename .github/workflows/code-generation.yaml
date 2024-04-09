@@ -19,6 +19,8 @@ jobs:
           cd fern
           fern generate
       - name: Generate Java client with Speakeasy
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
         run: speakeasy generate sdk --lang=java --out=speakeasy-generated --schema=openapi.yaml
       - name: Generate stub Spring server with OpenAPI Generator
         run: |
