@@ -54,7 +54,8 @@ jobs:
         run: bump diff ./base/openapi.yaml ./pr-branch/openapi.yaml
       ## Changelog generation ############################################
       - name : Oasdiff - Generate Changelog
-        run: oasdiff changelog ./base/openapi.yaml ./pr-branch/openapi.yaml
+        # For how to create a tenant key, see https://github.com/Tufin/oasdiff/blob/main/OASDIFF-SERVICE.md
+        run:  curl -X POST -F base=@openapi.yaml -F revision=@openapi_v2.yaml  https://api.oasdiff.com/tenants/${{ secrets.OASDIFF_TENANT_KEY }}/changelog
       - name: Optic - Generate changelog
         run: optic history openapi.yaml
 
