@@ -26,10 +26,13 @@ Can come from:
 
 ## How to do it - the code
 See the [Code and run output](./.github/workflows/breaking-checks.yaml)
+- Wiretap
+- Schemathesis - fuzz testing
 
-## What to look out for when choosing a breaking change / diff tool
+## Tips + What to look out for when choosing a breaking change / diff tool
 - Well-defined breaking change rules. https://github.com/Tufin/oasdiff/blob/main/BREAKING-CHANGES-EXAMPLES.md
 - Should also generate OpenAPI change log 
+- Aim to detect undocumented properties. You can set your OpenAPI schemas to 
 
 ## Challenges
 - Absence of API providers breaking change policy
