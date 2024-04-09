@@ -1,14 +1,13 @@
 # Automated Breaking change Controls
 
 ## The problem
-Breaking change: A change to an API that requires existing client integrations to change. 
+Breaking change: A change to an API that requires existing client integration code to change. 
 
-**Real customer quote 1:**  "You should stop doing breaking changes to the api ASAP. If you do not, as a business, you will lose a massive amount of customers and lose reputation. The reasoning is simple: The API provides a business-critical data infrastructure for a lot of applications.
-There can be integrations/SDK that are done one one-time basis, without on-going support. ....the integration is supposed to work for years ahead, since APIs are not supposed to be changed. "
+**Real customer quote 1:**  "You should stop doing breaking changes to the api ASAP. If you do not, as a business, you will lose a massive amount of customers and lose reputation."
 
 **Real customer quote 2:** "The way [company] handles API changes is going to impact our business since we consume the data in production. We are left without any solutions or guidelines. We found out a bit late about the breaking change that is going to happen tomorrow..."
 
-Can come from:
+Breaking changes can come from:
 - a change in the API definition.
 - a change in the code not reflected in the definition.
 
@@ -25,15 +24,18 @@ Can come from:
 - Lower cognitive load regarding breaking changes 
 
 ## How to do it - the code
-See the [Code and run output](./.github/workflows/breaking-checks.yaml)
-- Wiretap
-- Schemathesis - fuzz testing
+See the [code here](./.github/workflows/breaking-checks.yaml).
+Code example for:
+- Tufin/Oasdiff
+- Optic
+- Bump.sh
 
 ## Tips + What to look out for when choosing a tool
 - Well-defined breaking change rules. https://github.com/Tufin/oasdiff/blob/main/BREAKING-CHANGES-EXAMPLES.md
 - Should also generate OpenAPI change log. 
   - You can follow the format in https://keepachangelog.com/en/1.0.0/ 
-- Aim to detect undocumented properties. You can set your OpenAPI schemas to 
+- Aim to detect undocumented properties. Set `additionalProperties:false` before runs using: 
+  - https://github.com/NickHeap2/add-props-flipflop  
 
 ## Challenges
 - Absence of API providers breaking change policy
