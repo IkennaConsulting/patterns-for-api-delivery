@@ -30,12 +30,11 @@ Code example for:
 - Optic
 - Bump.sh
 
-## Tips + What to look out for when choosing a tool
+## Tips 
 - Well-defined breaking change rules. https://github.com/Tufin/oasdiff/blob/main/BREAKING-CHANGES-EXAMPLES.md
 - Should also generate OpenAPI change log. 
   - You can follow the format in https://keepachangelog.com/en/1.0.0/ 
-- Aim to detect undocumented properties. Set `additionalProperties:false` before runs using: 
-  - https://github.com/NickHeap2/add-props-flipflop  
+
 
 ## Challenges
 - Absence of API providers breaking change policy
