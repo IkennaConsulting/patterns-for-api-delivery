@@ -31,7 +31,7 @@ See the [Code and run output](./.github/workflows/api-consistency.yml)
 ## Challenges
 - No style guide on which to base the linting rules
 - API definitions not in version control
-- Writing rules takes effort and specialized knowledge
+- Writing rules takes effort
 - No API platform / governance team to support the rules
 
 ## Contraindications
