@@ -34,8 +34,6 @@ See the [Code here](./.github/workflows/code-generation.yaml)
 - No budget / resource to support more client SDKs
 
 ## Alternatives
- Client side: 
- - Client coded integration
- - Provider hand coded SDKs
-Server side
- - Provider hand coded schema objects and controllers
+- Client hand-coded integration
+- Provider hand-coded  client SDKs
+- Provider hand-coded server stubs
