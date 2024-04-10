@@ -36,7 +36,6 @@ See the [Code and run output](./.github/workflows/api-consistency.yml)
 
 ## Contraindications
 - Early part of product development
-- Small number of teams
 - Non important API
 
 ## Alternatives
