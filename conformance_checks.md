@@ -33,10 +33,12 @@ See the [Code here](./.github/workflows/conformance-checks.yaml)
 - Wiretap
 - Schemathesis - fuzz testing
 
-## What to look out for when doing conformance testing
+## Tips
 - Run on PR changes (lightweight)
 - Avoid running full suite on every build (expensive)
-- Multiple controls helpful - testing conformance + generating code from specs 
+- Multiple controls helpful - testing conformance + generating code from specs
+- Aim to detect undocumented properties. Set `additionalProperties:false` before test runs using:
+  - https://github.com/NickHeap2/add-props-flipflop
 
 ## Challenges
 - Conformance testing is expensive to run end-to-end as part of regular test suite.
